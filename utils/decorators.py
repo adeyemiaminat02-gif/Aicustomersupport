@@ -9,7 +9,7 @@ def admin_only(func):
     async def wrapper(update: Update, context: ContextTypes.DEFAULT_TYPE, *args, **kwargs):
         user_id = update.effective_user.id
         if user_id not in Config.ADMIN_IDS:
-            logger.warning( Unauthorized access attempt by user {user_id} )
+            logger.warning(f"Unauthorized access attempt by user {user_id}")
             if update.message:
                 await update.message.reply_text("⛔ Access Denied. This command is restricted to administrators.")
             elif update.callback_query:
