@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ai-customer-support-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: AI_PROVIDER
+        value: openai
+      - key: AI_API_KEY
+        sync: false
+      - key: MODEL_NAME
+        value: gpt-4o-mini
+      - key: ADMIN_IDS
+        sync: false
+      - key: DATABASE_URL
+        value: data/bot_database.db
